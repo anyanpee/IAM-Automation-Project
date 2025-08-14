@@ -27,7 +27,8 @@ This solution addresses critical enterprise challenges:
 
 ## 🏗️ Architecture
 
-![Architecture Diagram](screenshots/Untitled%20diagram%20_%20Mermaid%20Chart-2025-08-14-120913.png)
+![Architecture Diagram]
+![](<IAM-Automation-Screenshot 2025-08-14 073540.png>)
 
 
 **Tech Stack:**
