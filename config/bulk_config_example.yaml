@@ -1,0 +1,31 @@
+users:
+  - name: "developer-1"
+    groups:
+      - "developers"
+    policies:
+      - "arn:aws:iam::aws:policy/PowerUserAccess"
+  
+  - name: "readonly-user"
+    groups:
+      - "readonly"
+    policies:
+      - "arn:aws:iam::aws:policy/ReadOnlyAccess"
+
+roles:
+  - name: "EC2-S3-Access-Role"
+    trust_policy_file: "config/trust_policies.json"
+    policies:
+      - "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+      - "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"
+  
+  - name: "Lambda-Execution-Role"
+    trust_policy_file: "config/trust_policies.json"
+    policies:
+      - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+
+policies:
+  - name: "CustomS3Policy"
+    policy_file: "templates/s3_bucket_access.json"
+  
+  - name: "CustomEC2Policy"
+    policy_file: "templates/ec2_instance_management.json"

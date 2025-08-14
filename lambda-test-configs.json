@@ -1,0 +1,49 @@
+{
+  "audit_test": {
+    "action": "audit",
+    "parameters": {}
+  },
+  
+  "create_user_dry_run": {
+    "action": "create_user",
+    "parameters": {
+      "username": "demo-developer",
+      "groups": ["developers"],
+      "policies": ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
+    },
+    "dry_run": true
+  },
+  
+  "create_role_dry_run": {
+    "action": "create_role",
+    "parameters": {
+      "role_name": "demo-ec2-role",
+      "trust_policy": {
+        "Version": "2012-10-17",
+        "Statement": [{
+          "Effect": "Allow",
+          "Principal": {"Service": "ec2.amazonaws.com"},
+          "Action": "sts:AssumeRole"
+        }]
+      },
+      "policies": ["arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"]
+    },
+    "dry_run": true
+  },
+  
+  "create_policy_dry_run": {
+    "action": "create_policy",
+    "parameters": {
+      "policy_name": "demo-s3-policy",
+      "policy_document": {
+        "Version": "2012-10-17",
+        "Statement": [{
+          "Effect": "Allow",
+          "Action": ["s3:GetObject", "s3:ListBucket"],
+          "Resource": "*"
+        }]
+      }
+    },
+    "dry_run": true
+  }
+}

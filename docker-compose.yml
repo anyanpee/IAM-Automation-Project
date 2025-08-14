@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  iam-automation:
+    build: .
+    container_name: iam-automation-tool
+    environment:
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ~/.aws:/home/appuser/.aws:ro
+      - ./config:/app/config
+      - ./templates:/app/templates
+      - ./output:/app/output
+    working_dir: /app
+    command: tail -f /dev/null  # Keep container running for interactive use
+    
+  # Optional: Web interface (if you want to add one later)
+  # iam-web:
+  #   build: .
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - AWS_REGION=${AWS_REGION:-us-east-1}
+  #   volumes:
+  #     - ~/.aws:/home/appuser/.aws:ro
+  #   command: python src/web_interface.py

@@ -1,0 +1,27 @@
+graph TD
+    A[Developer/Admin] -->|AWS CLI Commands| B[AWS Lambda Function]
+    B -->|Boto3 SDK| C[AWS IAM Service]
+    B -->|Logs| D[CloudWatch Logs]
+    C -->|Create/Audit| E[Users & Roles]
+    C -->|Manage| F[Policies]
+    B -->|Optional Storage| G[S3 Bucket]
+    
+    subgraph "AWS Cloud"
+        B
+        C
+        D
+        E
+        F
+        G
+    end
+    
+    subgraph "IAM Operations"
+        E
+        F
+    end
+    
+    style A fill:#e1f5fe
+    style B fill:#fff3e0
+    style C fill:#f3e5f5
+    style D fill:#e8f5e8
+    style G fill:#fff8e1
